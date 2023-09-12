@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -15,17 +16,22 @@
         <div class="input_container">
             <input type="text" placeholder="Add Todo" id="todo_input">
             <button @click="addTodo()">Add</button>
-            <input type="radio" id="all">
-            <label for="all">All</label>
-            <input type="radio" id="open" @click="filter">
-            <label for="open">Open</label>
-            <input type="radio" id="done">
-            <label for="done">Done</label>
+            <div class="radio_container" @click="filter">
+                <input type="radio" id="all">
+                <label for="all">All</label>
+                <input type="radio" id="open">
+                <label for="open">Open</label>
+                <input type="radio" id="done">
+                <label for="done">Done</label>
+            </div>
+            <button class="delete_btn" @click="deleteDone() ">Delete</button>
         </div>
         <ul class="list_container">
             <li v-for="todo of Todos" :key="todo.description"><input type="checkbox" :checked="todo.done"
-                    @click="updateTodoState(todo)">{{
-                todo.description }}</li>
+                    @click="updateTodoState(todo)">
+                <span v-if="todo.done" class="done">{{ todo.description }}</span>
+                <span v-else>{{ todo.description }}</span>
+            </li>
         </ul>
     </div>
 
