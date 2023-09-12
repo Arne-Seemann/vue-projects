@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h1>Todo-App</h1>
+    </header>
+    <div id="app">
+        <div class="input_container">
+            <input type="text" placeholder="Add Todo" id="todo_input">
+            <button @click="addTodo()">Add</button>
+            <input type="radio" id="all">
+            <label for="all">All</label>
+            <input type="radio" id="open" @click="filter">
+            <label for="open">Open</label>
+            <input type="radio" id="done">
+            <label for="done">Done</label>
+        </div>
+        <ul class="list_container">
+            <li v-for="todo of Todos" :key="todo.description"><input type="checkbox" :checked="todo.done"
+                    @click="updateTodoState(todo)">{{
+                todo.description }}</li>
+        </ul>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
